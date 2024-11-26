@@ -19,8 +19,14 @@
         </encoder>
     </appender>
 
-    
-
-
-
+    <if condition = 'property("env").equals("test")' >
+        <then>
+            <root level="DEBUG">
+                <appender-ref ref="STDOUT"/>
+            </root>
+            <logger name="com.example.microservices.controller" level="ERROR" additivity="false" >
+              <appender-ref ref="FILE_CONTROLLER" />
+            </logger>
+        </then>
+    </if>
 </configuration>
